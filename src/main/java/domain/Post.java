@@ -15,6 +15,42 @@ public class Post {
     private int repostsCount;
     private int viewsCount;
     private String type;
+    private String[] attachments;
+    private String geo;
+    private boolean canEdit;
+    private boolean canDelete;
+
+    public String[] getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(String[] attachments) {
+        this.attachments = attachments;
+    }
+
+    public String getGeo() {
+        return geo;
+    }
+
+    public void setGeo(String geo) {
+        this.geo = geo;
+    }
+
+    public boolean isCanEdit() {
+        return canEdit;
+    }
+
+    public void setCanEdit(boolean canEdit) {
+        this.canEdit = canEdit;
+    }
+
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
+    }
 
     public void comment(User user, String message) {
         comments.add(new Comment(user, message));

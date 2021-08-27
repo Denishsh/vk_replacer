@@ -4,35 +4,30 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Post {
-    private String avatar_url;
-    private String header;
-    private String description;
-    private Date date;
-    private ArrayList<Comment> comments;
-    private ArrayList<User> repostedToUsers;
-    private ArrayList<User> likedByUsers;
-    private int likesCount;
-    private int repostsCount;
-    private int viewsCount;
+    private int id;
+    private int ownerId;
+    private int fromId;
+    private int createdBy;
+    private int date;
+    private String text;
+    private int replyOwnerId;
+    private int replyPostId;
+    private boolean friendsOnly;
+    private CommentsInfo commentsInfo;
+    private LikesInfo likesInfo;
+    private RepostsInfo repostsInfo;
     private String type;
-    private String[] attachments;
-    private String geo;
+    private Geo geo;
     private boolean canEdit;
     private boolean canDelete;
+    private int signerId;
+    private boolean isFavorite;
 
-    public String[] getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(String[] attachments) {
-        this.attachments = attachments;
-    }
-
-    public String getGeo() {
+    public Geo getGeo() {
         return geo;
     }
 
-    public void setGeo(String geo) {
+    public void setGeo(Geo geo) {
         this.geo = geo;
     }
 
@@ -49,97 +44,16 @@ public class Post {
     }
 
     public void setCanDelete(boolean canDelete) {
-        this.canDelete = canDelete;
     }
 
     public void comment(User user, String message) {
-        comments.add(new Comment(user, message));
     }
 
     public void viewPost(User user) {
-        viewsCount++;
     }
 
     public void addToBookmarks(User user) {
 
-    }
-
-    public boolean like(User user) {
-        if (!likedByUsers.contains(user)) {
-            likesCount++;
-            likedByUsers.add(user);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isLiked(User user) {
-        return likedByUsers.contains(user);
-    }
-
-    public boolean makeRepost(User user) {
-        if (!repostedToUsers.contains(user)) {
-            repostsCount++;
-            repostedToUsers.add(user);
-            return true;
-        }
-        return false;
-    }
-
-    public String getAvatar_url() {
-        return avatar_url;
-    }
-
-    public void setAvatar_url(String avatar_url) {
-        this.avatar_url = avatar_url;
-    }
-
-    public String getHeader() {
-        return header;
-    }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public ArrayList<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public int getLikesCount() {
-        return likesCount;
-    }
-
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
-    }
-
-    public int getViewsCount() {
-        return viewsCount;
-    }
-
-    public void setViewsCount(int viewsCount) {
-        this.viewsCount = viewsCount;
     }
 
     public String getType() {
@@ -150,27 +64,115 @@ public class Post {
         this.type = type;
     }
 
-    public ArrayList<User> getRepostedToUsers() {
-        return repostedToUsers;
+    public int getId() {
+        return id;
     }
 
-    public void setRepostedToUsers(ArrayList<User> repostedToUsers) {
-        this.repostedToUsers = repostedToUsers;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public ArrayList<User> getLikedByUsers() {
-        return likedByUsers;
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public void setLikedByUsers(ArrayList<User> likedByUsers) {
-        this.likedByUsers = likedByUsers;
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public int getRepostsCount() {
-        return repostsCount;
+    public int getFromId() {
+        return fromId;
     }
 
-    public void setRepostsCount(int repostsCount) {
-        this.repostsCount = repostsCount;
+    public void setFromId(int fromId) {
+        this.fromId = fromId;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getReplyOwnerId() {
+        return replyOwnerId;
+    }
+
+    public void setReplyOwnerId(int replyOwnerId) {
+        this.replyOwnerId = replyOwnerId;
+    }
+
+    public int getReplyPostId() {
+        return replyPostId;
+    }
+
+    public void setReplyPostId(int replyPostId) {
+        this.replyPostId = replyPostId;
+    }
+
+    public boolean isFriendsOnly() {
+        return friendsOnly;
+    }
+
+    public void setFriendsOnly(boolean friendsOnly) {
+        this.friendsOnly = friendsOnly;
+    }
+
+    public CommentsInfo getCommentsInfo() {
+        return commentsInfo;
+    }
+
+    public void setCommentsInfo(CommentsInfo commentsInfo) {
+        this.commentsInfo = commentsInfo;
+    }
+
+    public LikesInfo getLikesInfo() {
+        return likesInfo;
+    }
+
+    public void setLikesInfo(LikesInfo likesInfo) {
+        this.likesInfo = likesInfo;
+    }
+
+    public RepostsInfo getRepostsInfo() {
+        return repostsInfo;
+    }
+
+    public void setRepostsInfo(RepostsInfo repostsInfo) {
+        this.repostsInfo = repostsInfo;
+    }
+
+    public int getSignerId() {
+        return signerId;
+    }
+
+    public void setSignerId(int signerId) {
+        this.signerId = signerId;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

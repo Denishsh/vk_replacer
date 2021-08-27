@@ -12,7 +12,7 @@ public class User {
         this.name = name;
     }
 
-    public String getAvatar_url() {
+    public String getAvatarUrl() {
         return avatar_url;
     }
 
